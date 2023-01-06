@@ -155,20 +155,34 @@ const postOrder = (node, cb = null, arr = []) => {
     return arr;
   }
 };
+
+const height = (tree, node) => {
+  // what are we going to do?
+  const isNodePresentLeft = find(tree.left, node);
+  const isNodePresentRight = find(tree.right, node);
+  if (isNodePresentLeft) {
+    console.log('I AM HERE IN THE LEFT SIDE!');
+  } else if (isNodePresentRight) {
+    console.log('I AM HERE IN THE RIGHT SIDE!');
+  }
+
+  return 69;
+};
 // Test code
 // createNode
 // const testNode = createNode(5);
 // console.log(testNode);
 
 // buildTree
-const testTree = buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
-console.log(prettyPrint(testTree));
-// const testTree = buildTree([1, 2, 3, 4, 5]);
-// console.log(getArrayValues(testTree));
-console.log(preOrder(testTree));
-console.log(inOrder(testTree));
-console.log(postOrder(testTree));
+// const testTree = buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+const testTree = buildTree([1, 2, 3, 4, 5]);
+// console.log(prettyPrint(testTree));
+// // console.log(getArrayValues(testTree));
+// console.log(preOrder(testTree));
+// console.log(inOrder(testTree));
+// console.log(postOrder(testTree));
 
+console.log(height(testTree, 1));
 // console.log(prettyPrint(insert(testTree, 0)));
 // console.log(prettyPrint(remove(testTree, 0)));
 // console.log(find(testTree, 4));
