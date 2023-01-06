@@ -144,6 +144,17 @@ const inOrder = (node, cb = null, arr = []) => {
   }
 };
 
+const postOrder = (node, cb = null, arr = []) => {
+  if (node !== null) {
+    postOrder(node.left, cb, arr);
+    postOrder(node.right, cb, arr);
+    if (node.data !== '') {
+      arr.push(node.data);
+    }
+
+    return arr;
+  }
+};
 // Test code
 // createNode
 // const testNode = createNode(5);
