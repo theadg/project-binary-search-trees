@@ -67,6 +67,13 @@ const insert = (tree, value) => {
   return buildTree(array);
 };
 
+const remove = (tree, value) => {
+  let array = getArrayValues(tree);
+  array.splice(array.indexOf(value), 0);
+  array = sort(removeDuplicates(array));
+  return buildTree(array);
+};
+
 // const getArrayValues = (tree) => {
 //   const array = getNodeValue(tree);
 
