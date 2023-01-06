@@ -120,6 +120,18 @@ const levelOrder = (tree, cb = null, arr = []) => {
   }
 };
 
+const preOrder = (node, cb = null, arr = []) => {
+  if (node !== null) {
+    if (node.data !== '') {
+      arr.push(node.data);
+    }
+    preOrder(node.left, cb, arr);
+    preOrder(node.right, cb, arr);
+
+    return arr;
+  }
+};
+
 // Test code
 // createNode
 // const testNode = createNode(5);
