@@ -132,6 +132,18 @@ const preOrder = (node, cb = null, arr = []) => {
   }
 };
 
+const inOrder = (node, cb = null, arr = []) => {
+  if (node !== null) {
+    inOrder(node.left, cb, arr);
+    if (node.data !== '') {
+      arr.push(node.data);
+    }
+    inOrder(node.right, cb, arr);
+
+    return arr;
+  }
+};
+
 // Test code
 // createNode
 // const testNode = createNode(5);
