@@ -74,6 +74,20 @@ const remove = (tree, value) => {
   return buildTree(array);
 };
 
+const find = (tree, value) => {
+  // base case if the value exists
+  if (tree !== null) {
+    if (tree.data === value) return tree;
+
+    // I was not returning the values if they were found
+    const leftResult = find(tree.left, value);
+    if (leftResult) return leftResult;
+
+    const rightResult = find(tree.right, value);
+    if (rightResult) return rightResult;
+  }
+};
+
 // const getArrayValues = (tree) => {
 //   const array = getNodeValue(tree);
 
