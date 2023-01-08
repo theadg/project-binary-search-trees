@@ -233,4 +233,4 @@ console.log(isBalanced(testTree));
 // console.log(getArrayValues(inOrder(testTree)));
 // console.log(getArrayValues(postOrder(testTree)));
 
-// TODO: write is balanced
+// TODO: clean up code
