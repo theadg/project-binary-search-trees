@@ -156,33 +156,60 @@ const postOrder = (node, cb = null, arr = []) => {
   }
 };
 
-const height = (tree, node) => {
-  // what are we going to do?
-  const isNodePresentLeft = find(tree.left, node);
-  const isNodePresentRight = find(tree.right, node);
-  if (isNodePresentLeft) {
-    console.log('I AM HERE IN THE LEFT SIDE!');
-  } else if (isNodePresentRight) {
-    console.log('I AM HERE IN THE RIGHT SIDE!');
-  }
-
-  return 69;
+const height = (node) => {
+  if (!node) return -1;
+  return 1 + Math.max(height(node.left), height(node.right));
 };
-// Test code
-// createNode
-// const testNode = createNode(5);
-// console.log(testNode);
 
+const depth = (tree, node) => {
+  if (tree.data === node.data) {
+    return 0;
+  }
+  const isNodePresentLeft = find(tree.left, node.data);
+  const isNodePresentRight = find(tree.right, node.data);
+
+  if (isNodePresentLeft) {
+    return 1 + depth(tree.left, node);
+  } else if (isNodePresentRight) {
+    return 1 + depth(tree.right, node);
+  }
+};
+
+const isBalanced = (tree) => {
+  // get the height of the right tree
+  // get the height of the left tree
+
+  const leftHeight = height(tree.left);
+  const rightHeight = height(tree.right);
+
+  const balance = leftHeight - rightHeight <= 1 ? true : false;
+
+  return balance;
+};
+
+const rebalance = (tree) => {};
 // buildTree
 // const testTree = buildTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
-const testTree = buildTree([1, 2, 3, 4, 5]);
-// console.log(prettyPrint(testTree));
+const testTree = buildTree([5, 10, 15, 20, 25, 45, 30, 35]);
+// const testTree = buildTree([1, 2, 3, 4, 5]);
+console.log(prettyPrint(testTree));
 // // console.log(getArrayValues(testTree));
 // console.log(preOrder(testTree));
 // console.log(inOrder(testTree));
 // console.log(postOrder(testTree));
 
-console.log(height(testTree, 1));
+// console.log('Depth 20: ' + height(testTree, 20));
+// console.log('Depth 10: ' + height(testTree, 10));
+// console.log('Depth 30: ' + height(testTree, 30));
+// console.log('Depth 15: ' + height(testTree, 15));
+// console.log('Depth 5: ' + height(testTree, 5));
+// console.log('Depth 35: ' + height(testTree, 35));
+// console.log('Depth 25: ' + height(testTree, 25));
+
+const foundNode = find(testTree, 45);
+// console.log('HEIGHT', height(foundNode));
+console.log('DEPTH', depth(testTree, foundNode));
+console.log(isBalanced(testTree));
 // console.log(prettyPrint(insert(testTree, 0)));
 // console.log(prettyPrint(remove(testTree, 0)));
 // console.log(find(testTree, 4));
@@ -201,3 +228,5 @@ console.log(height(testTree, 1));
 // console.log(prettyPrint(testTree));
 // console.log(getArrayValues(inOrder(testTree)));
 // console.log(getArrayValues(postOrder(testTree)));
+
+// TODO: write is balanced
